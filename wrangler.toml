@@ -1,0 +1,40 @@
+# Basic standard settings
+name = "nameless-king-storage"
+main = "worker.js"
+compatibility_date = "2025-01-27"
+send_metrics = false
+preview_urls = false
+# set to true if you dont want to use a domain
+workers_dev = false
+
+# Serve up any static assets, turn off serving directly
+# though serving directly could technically be turned on,
+# we do some htmlrewrites to the data itself
+assets = { directory = "./static/", binding = "ASSETS", html_handling = "drop-trailing-slash", not_found_handling = "404-page", run_worker_first = true }
+
+# Turn this off if you don't want to use a domain
+routes = [
+  { pattern = "socksthewolf.com/storage/*", zone_name = "socksthewolf.com" },
+]
+
+# The r2 bucket to fetch files from, make sure to change the bucket name
+[[r2_buckets]]
+binding = "FILE_STORE"
+bucket_name = "socks-storage"
+
+[vars]
+# path from the origin hostname that should trigger file sharing
+FILES_PATH = "/storage/"
+# if false, no files will be shared
+SHARE_ENABLED = "true"
+# Turnstile Captcha public key
+CAPTCHA_SITE_KEY = "0x4AAAAAAA6by3DBm-al8Y7S"
+# If false, files will be directly downloadable
+# If you are on cloudflare free, it's recommended you
+# set this to true to keep within limits
+REQUIRE_CAPTCHA = "true"
+
+# Logging is on and 100%, but could be disabled
+[observability]
+enabled = false
+head_sampling_rate = 1

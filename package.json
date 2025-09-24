@@ -1,0 +1,8 @@
+{
+  "name": "nameless-king-storage",
+  "version": "1.0.0",
+  "license": "ISC",
+  "devDependencies": {
+    "wrangler": "^4.12.0"
+  }
+}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>StorageService: Captcha Check</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <link rel="stylesheet" href="/pico.min.css">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+  </head>
+  <body class="container">
+    <article>
+      <h2>Security Check</h2>
+      <p>Before continuing to download the file, please complete the captcha below. 
+          This is done to protect against bad actors and AI scrapers.</p>
+      <br />
+      <center>
+        <form method="POST" action="/">
+          <input type="hidden" name="file" id="fileLoc" />
+          <div class="cf-turnstile"></div>
+          <br />
+          <input type="submit" value="Get File" />
+        </form>
+      </center>
+    </article>
+  </body>    
+</html>
